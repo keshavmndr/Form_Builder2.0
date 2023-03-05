@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.kotlintodopractice.databinding.FragmentOtherDialogBinding
 import com.example.kotlintodopractice.utils.model.ToDoData
@@ -73,17 +74,19 @@ class OtherDialogFragment : DialogFragment() {
             val optionC = binding.mcq3Et.text.toString()
             val optionD = binding.mcq4Et.text.toString()
 
-            val todoTask =
-                "$ques/delimiter$ans/delimiter$optionA/delimiter$optionB/delimiter$optionC/delimiter$optionD"
-            if (todoTask.isNotEmpty()){
-                if (toDoData == null){
-                    listener?.saveTask(todoTask , binding.todoEt)
-                }else{
-                    toDoData!!.task = todoTask
-                    listener?.updateTask(toDoData!!, binding.todoEt)
-                }
+            if(!(ans.isNotEmpty()&&(optionA.isNotEmpty()||optionB.isNotEmpty()||optionC.isNotEmpty()||optionD.isNotEmpty()))) {
+                val todoTask =
+                    "$ques/delimiter$ans/delimiter$optionA/delimiter$optionB/delimiter$optionC/delimiter$optionD"
+                if (todoTask.isNotEmpty()) {
+                    if (toDoData == null) {
+                        listener?.saveTask(todoTask, binding.todoEt)
+                    } else {
+                        toDoData!!.task = todoTask
+                        listener?.updateTask(toDoData!!, binding.todoEt)
+                    }
 
-            }
+                }
+            } else Toast.makeText(context,"Invaild Question Format", Toast.LENGTH_LONG).show()
         }
     }
 
