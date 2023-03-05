@@ -51,7 +51,12 @@ class OtherDialogFragment : DialogFragment() {
         if (arguments != null){
 
             toDoData = ToDoData(arguments?.getString("taskId").toString() ,arguments?.getString("task").toString())
-            binding.todoEt.setText(toDoData?.task)
+            binding.todoEt.setText(toDoData?.task!!.split("/delimiter")[0])
+            binding.otherEt.setText(toDoData?.task!!.split("/delimiter")[1])
+            binding.mcq1Et.setText(toDoData?.task!!.split("/delimiter")[2])
+            binding.mcq2Et.setText(toDoData?.task!!.split("/delimiter")[3])
+            binding.mcq3Et.setText(toDoData?.task!!.split("/delimiter")[4])
+            binding.mcq4Et.setText(toDoData?.task!!.split("/delimiter")[5])
         }
 
 

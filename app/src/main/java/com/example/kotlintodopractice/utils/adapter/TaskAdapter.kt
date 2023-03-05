@@ -28,7 +28,10 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
         with(holder) {
             with(list[position]) {
                 binding.todoTask.text = this.task.split("/delimiter")[0]
-                binding.answer.hint = this.task.split("/delimiter")[1]
+
+                if (this.task.split("/delimiter")[1].isNotEmpty()){
+                    binding.answer.hint = "Answer Hint: " + this.task.split("/delimiter")[1]
+                }
 
                 if (this.task.split("/delimiter")[2].isNotEmpty()){
                     binding.mcq1.visibility = View.VISIBLE
