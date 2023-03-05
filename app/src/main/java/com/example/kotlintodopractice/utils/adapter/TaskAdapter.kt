@@ -31,24 +31,27 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
 
                 if (this.task.split("/delimiter")[1].isNotEmpty()){
                     binding.answer.hint = "Answer Hint: " + this.task.split("/delimiter")[1]
-                }
+                } else binding.answer.hint = "Updated Answer Not Provided"
 
                 if (this.task.split("/delimiter")[2].isNotEmpty()){
                     binding.mcq1.visibility = View.VISIBLE
                     binding.mcq1.text = this.task.split("/delimiter")[2]
-                }
+                } else binding.mcq1.visibility = View.GONE
+
                 if (this.task.split("/delimiter")[3].isNotEmpty()){
                     binding.mcq2.visibility = View.VISIBLE
                     binding.mcq2.text = this.task.split("/delimiter")[3]
-                }
+                } else binding.mcq2.visibility = View.GONE
+
                 if (this.task.split("/delimiter")[4].isNotEmpty()){
                     binding.mcq3.visibility = View.VISIBLE
                     binding.mcq3.text = this.task.split("/delimiter")[4]
-                }
+                } else binding.mcq3.visibility = View.GONE
+
                 if (this.task.split("/delimiter")[5].isNotEmpty()){
                     binding.mcq4.visibility = View.VISIBLE
                     binding.mcq4.text = this.task.split("/delimiter")[5]
-                }
+                } else binding.mcq4.visibility = View.GONE
 
                 Log.d(TAG, "onBindViewHolder: "+this)
                 binding.editTask.setOnClickListener {
