@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="type_your_question">Type your Question</string>
+    <string name="type_your_answer_other_than_mcq">Type your Answer other than MCQ</string>
+    <string name="mcq_option_b">MCQ Option B</string>
+    <string name="mcq_option_c">MCQ Option C</string>
+    <string name="mcq_option_d">MCQ Option D</string>
+    <string name="mcq_option_a">MCQ Option A</string>
 </resources>

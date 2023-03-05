@@ -1,7 +1,9 @@
 package com.example.kotlintodopractice.utils.adapter
 
+import android.opengl.Visibility
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintodopractice.databinding.EachOtherItemBinding
@@ -25,7 +27,25 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                binding.todoTask.text = this.task
+                binding.todoTask.text = this.task.split("/delimiter")[0]
+                binding.answer.hint = this.task.split("/delimiter")[1]
+
+                if (this.task.split("/delimiter")[2].isNotEmpty()){
+                    binding.mcq1.visibility = View.VISIBLE
+                    binding.mcq1.text = this.task.split("/delimiter")[2]
+                }
+                if (this.task.split("/delimiter")[3].isNotEmpty()){
+                    binding.mcq2.visibility = View.VISIBLE
+                    binding.mcq2.text = this.task.split("/delimiter")[3]
+                }
+                if (this.task.split("/delimiter")[4].isNotEmpty()){
+                    binding.mcq3.visibility = View.VISIBLE
+                    binding.mcq3.text = this.task.split("/delimiter")[4]
+                }
+                if (this.task.split("/delimiter")[5].isNotEmpty()){
+                    binding.mcq4.visibility = View.VISIBLE
+                    binding.mcq4.text = this.task.split("/delimiter")[5]
+                }
 
                 Log.d(TAG, "onBindViewHolder: "+this)
                 binding.editTask.setOnClickListener {

@@ -61,7 +61,15 @@ class OtherDialogFragment : DialogFragment() {
 
         binding.todoNextBtn.setOnClickListener {
 
-            val todoTask = binding.todoEt.text.toString()
+            val ques = binding.todoEt.text.toString()
+            val ans = binding.otherEt.text.toString()
+            val optionA = binding.mcq1Et.text.toString()
+            val optionB = binding.mcq2Et.text.toString()
+            val optionC = binding.mcq3Et.text.toString()
+            val optionD = binding.mcq4Et.text.toString()
+
+            val todoTask =
+                "$ques/delimiter$ans/delimiter$optionA/delimiter$optionB/delimiter$optionC/delimiter$optionD"
             if (todoTask.isNotEmpty()){
                 if (toDoData == null){
                     listener?.saveTask(todoTask , binding.todoEt)
