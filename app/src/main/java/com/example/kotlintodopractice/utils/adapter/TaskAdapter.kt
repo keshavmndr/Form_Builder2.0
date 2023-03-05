@@ -29,28 +29,33 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
             with(list[position]) {
                 binding.todoTask.text = this.task.split("/delimiter")[0]
 
+                binding.answer.visibility = View.VISIBLE
                 if (this.task.split("/delimiter")[1].isNotEmpty()){
                     binding.answer.hint = "Answer Hint: " + this.task.split("/delimiter")[1]
-                } else binding.answer.hint = "Updated Answer Not Provided"
+                } else binding.answer.hint = "No Answer Provided"
 
                 if (this.task.split("/delimiter")[2].isNotEmpty()){
                     binding.mcq1.visibility = View.VISIBLE
                     binding.mcq1.text = this.task.split("/delimiter")[2]
+                    binding.answer.visibility = View.GONE
                 } else binding.mcq1.visibility = View.GONE
 
                 if (this.task.split("/delimiter")[3].isNotEmpty()){
                     binding.mcq2.visibility = View.VISIBLE
                     binding.mcq2.text = this.task.split("/delimiter")[3]
+                    binding.answer.visibility = View.GONE
                 } else binding.mcq2.visibility = View.GONE
 
                 if (this.task.split("/delimiter")[4].isNotEmpty()){
                     binding.mcq3.visibility = View.VISIBLE
                     binding.mcq3.text = this.task.split("/delimiter")[4]
+                    binding.answer.visibility = View.GONE
                 } else binding.mcq3.visibility = View.GONE
 
                 if (this.task.split("/delimiter")[5].isNotEmpty()){
                     binding.mcq4.visibility = View.VISIBLE
                     binding.mcq4.text = this.task.split("/delimiter")[5]
+                    binding.answer.visibility = View.GONE
                 } else binding.mcq4.visibility = View.GONE
 
                 Log.d(TAG, "onBindViewHolder: "+this)
